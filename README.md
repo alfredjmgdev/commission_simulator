@@ -50,7 +50,7 @@ Or run the following command to see the coverage of the tests:
 
 1. Clone the repository
 2. In the commission_simulator_be folder, create a .env file with the correct values, there is a .env.example file that can be used as a reference. It was not included in the repository because it contains sensitive information.
-3. Run `docker-compose up --build -d` create the containers and run the application.
+3. Run `docker-compose up --build -d` create the containers and run the application. If there is a timeout error please try `docker compose up -d --force-recreate --build`
 4. Go to `http://localhost:5173` to see the application.
 
 ## 📚 Documentation
