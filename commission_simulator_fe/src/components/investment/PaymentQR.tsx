@@ -5,8 +5,17 @@ import { formatCurrency, truncateAddress } from "../../utils/formatters";
 
 const PaymentQR: React.FC = () => {
   const { paymentData, checkPayment, loading, paymentQRRef } = useInvestment();
+  const [showFullAddress, setShowFullAddress] = React.useState(false);
 
   if (!paymentData) return null;
+
+  const handleMouseDown = () => {
+    setShowFullAddress(true);
+  };
+
+  const handleMouseUp = () => {
+    setShowFullAddress(false);
+  };
 
   return (
     <div ref={paymentQRRef} className="bg-white p-6 rounded-lg shadow-md mt-6">
@@ -29,12 +38,24 @@ const PaymentQR: React.FC = () => {
         <p className="text-sm font-medium text-gray-800 mb-1">
           Monto: {formatCurrency(paymentData.amount)}
         </p>
-        <p className="text-sm text-gray-600 break-all mt-2">
-          Dirección: {truncateAddress(paymentData.paymentAddress, 10)}
-        </p>
-        <p className="text-xs text-gray-500 mt-1">
-          (Haz clic para ver la dirección completa)
-        </p>
+        <div className="text-sm text-gray-600 break-all mt-2">
+          <p>
+            Dirección:{" "}
+            {showFullAddress
+              ? paymentData.paymentAddress
+              : truncateAddress(paymentData.paymentAddress, 10)}
+          </p>
+        </div>
+        <button
+          className="text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 py-1 px-3 rounded mt-1"
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onTouchStart={handleMouseDown}
+          onTouchEnd={handleMouseUp}
+        >
+          Mantén presionado para ver dirección completa
+        </button>
       </div>
 
       <Button
