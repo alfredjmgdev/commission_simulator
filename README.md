@@ -24,33 +24,7 @@ A full-stack application designed for Commission Simulator, built with React + V
 
 For this it was used hexagonal architecture, with the following layers:
 
-commission_simulator_be/
-├── src/
-│ ├── application/
-│ │ └── use-cases/
-│ │ └── investment/
-│ │
-│ ├── domain/
-│ │ ├── entities/
-│ │ │ └── investment/
-│ │ │
-│ │ ├── interfaces/
-│ │ │ └── investment/
-│ │ │
-│ │ └── repositories/
-│ │ └── investment/
-│ │
-│ ├── infrastructure/
-│ │ ├── controllers/
-│ │ │ └── investment/
-│ │ │
-│ │ ├── dtos/
-│ │ │ └── investment/
-│ │ │
-│ │ ├── modules/
-│ │ │
-│ │ └── repositories/
-│ │ └── investment/
+![alt text](doc_assets/image.png)
 
 #### Testing
 
