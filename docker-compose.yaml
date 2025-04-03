@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # Backend Service
+  backend:
+    build:
+      context: ./commission_simulator_be
+      dockerfile: Dockerfile
+    container_name: commission-simulator-backend
+    restart: unless-stopped
+    env_file:
+      - ./commission_simulator_be/.env
+    ports:
+      - "3001:3001"
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./commission_simulator_fe
+      dockerfile: Dockerfile
+    container_name: commission-simulator-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    env_file:
+      - ./commission_simulator_fe/.env
+    ports:
+      - "5173:80"
